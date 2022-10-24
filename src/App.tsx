@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Button from './components/Button/Button'
 import FieldSet from './components/FieldSet/FieldSet'
 import Header from './components/Header/Header'
 import TextArea from './components/TextArea/TextArea'
 function App() {
+  const emailInput = useRef<HTMLInputElement>()
+
   const [height, setHeight] = useState('')
   const [weight, setWeight] = useState('')
   const [result, setResult] = useState('')
@@ -36,6 +38,12 @@ function App() {
     return clearBmi()
   }, [result])
 
+  useEffect(() => {
+    if (emailInput.current) {
+      emailInput.current.focus()
+    }
+  }, [])
+
   const clearBmi = () => {
     setTimeout(() => {
       setHeight('')
@@ -44,6 +52,9 @@ function App() {
       setColor1('black')
       setColor2('black')
       setColor3('black')
+      if (emailInput.current) {
+        emailInput.current.focus()
+      }
     }, 4000)
   }
 
@@ -56,12 +67,14 @@ function App() {
         />
       </Header>
       <FieldSet
+        referential={emailInput}
         desc={'Height in cm.'}
         type={'number'}
         value={height}
         onChange={(e) => setHeight(e.target.value)}
       />
       <FieldSet
+        referential={null}
         desc={'Weight in kg.'}
         type={'number'}
         value={weight}
