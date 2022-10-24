@@ -1,12 +1,12 @@
 import React from 'react'
-import "./FieldSet.css"
+import './FieldSet.css'
 type Props = {
-  desc: string,
-  type: string,
-  value:string
-  onChange:(event: React.ChangeEvent<HTMLInputElement>)=> void
+  desc: string
+  type: string
+  value: string
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
-const FieldSet = ({desc,type,value,onChange}:Props) => {
+const FieldSet = ({ desc, type, value, onChange }: Props) => {
   return (
     <div className='field-set'>
       <fieldset>

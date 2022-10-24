@@ -6,14 +6,15 @@ type Props = {
   color: string
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
-const Button = ({ label, bg, color,onClick }: Props) => {
+const Button = ({ label, bg, color, onClick }: Props) => {
   return (
     <div className={'button'}>
       <button
-       style={{ backgroundColor:`${ bg }`, color: `${ color }` }}
-       onClick={onClick}
-       >{label}
-       </button>
+        style={{ backgroundColor: `${bg}`, color: `${color}` }}
+        onClick={onClick}
+      >
+        {label}
+      </button>
     </div>
   )
 }
